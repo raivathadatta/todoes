@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="./output.css">
+</head>
+
+<body class="bg-primarry-backgroundColor ">
+    <section class="flex flex-col   align-middle">
+        <p class="text-title_color h-5 font-normal text-5xl  mx-auto my-3" id="todoTitle"></p>
+
+
+        <div class=" bg-primarry-backgroundColor m-auto shadow-2xl p-4 my-3">
+
+            <div id="parent_input_check_list_item">
+                <label id="input_label"></label>
+                <input type="text" placeholder="What needs to be done ?" id="add_check_list_item"
+                    class="w-[400px] mx-auto p-5  focus:border-l-hover_boder_color" />
+            </div>
+
+            <ul id="list_ul"> </ul>
+            <div id="footer_parent" class="flex flex-row justify-between ">
+                <p id="fotter_p"> zero</p>
+                <div id="footer_buttons_parent" class="flex justify-between w-[30%]">
+                    <button id="all" class="text-xs">All</button>
+                    <button id="active" class="text-xs"> Active</button>
+                    <button id="completed" class="text-xs"> Completed</button>
+
+                </div>
+                <button id="clear_component"> Clear Componet</button>
+            </div> 
+        </div>
+
+    </section>
+</body>
+<script src="../index.js"> </script>
+
+</html>
