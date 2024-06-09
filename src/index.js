@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     let todoes = []
- 
+
     let isChecked = false
     let activeCount = 0
 
@@ -33,13 +33,14 @@ document.addEventListener("DOMContentLoaded", function () {
     active_list.addEventListener("click", activeCheckedList)
     clear_component.addEventListener("click", clearCompletedList)
     completed_list.addEventListener("click", completedCheckedList);
-    label_inuput.addEventListener("click",toggleCheckedItem)
+    label_inuput.addEventListener("click", toggleCheckedItem)
     input_element.addEventListener("click", () => {
         console.log("click")
         input_element_parent.style = "border: 2px solid #D08383"
         input_element.addEventListener("blur", () => {
             input_element_parent.style = "border: none"
-        })})
+        })
+    })
 
     input_element.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
@@ -71,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function toggleCheckedItem() {
-        console.log("hello/////////////////////")
+
         console.log(`checked ${isChecked}`)
         isChecked = !isChecked
         resetCounter()
@@ -81,11 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
             let li_label = ul.children[index].querySelector("label");
             li_input.checked = isChecked
             li_label.style = isChecked ? "text-decoration: line-through; color:gray; font-size:20px" : "text-decoration: none;  font-size:20px"
-        
-     
         }
-        console.log(active_list)
-        console.log(completed_list)
+
     }
 
     function addTotoList(event) {
@@ -93,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let input = event
 
         if (input.length > 1) {
-            
+
             let li = document.createElement("li")
             let label = document.createElement('label');
             var inputElemnt = document.createElement("input");
