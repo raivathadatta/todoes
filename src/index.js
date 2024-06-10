@@ -1,9 +1,14 @@
+/// for clear completed events use filter lists 
+/// how to remove all child odes and andd new nodes 
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
 
-    let todoes = []
+      let isChecked = false // it helps to track if label is checked 
 
-    let isChecked = false
-    let activeCount = 0
+    let activeCount = 0  // number of active
 
 
 
@@ -87,11 +92,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function addTotoList(event) {
-
         let input = event
-
         if (input.length > 1) {
-
+       
             let li = document.createElement("li")
             let label = document.createElement('label');
             var inputElemnt = document.createElement("input");
@@ -116,7 +119,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 event.target.parentNode.remove();
             })
-            inputElemnt.addEventListener("click", () => {
+            inputElemnt.addEventListener("click", (event) => {
+                var clickedIndex = Array.prototype.indexOf.call(ul.children, event.target);
+                console.log(clickedIndex,"........................",event)
+         
                 if (inputElemnt.checked) {
                     console.log('its check')
                     label.style = "text-decoration: line-through; color:gray; font-size:20px"
@@ -131,18 +137,19 @@ document.addEventListener("DOMContentLoaded", function () {
             li.appendChild(button)
             ul.appendChild(li)
 
-            li.addEventListener("mouseenter", (event) => {
+            li.addEventListener("mouseenter", (_) => {
                 button.classList.remove("hidden")
             })
-            li.addEventListener("mouseleave", (event) => {
+            li.addEventListener("mouseleave", (_) => {
                 button.classList.add("hidden")
             })
             li.addEventListener("dblclick", (event) => {
+                console.log(event)
                 editContent(event)
             })
 
             input_element.value = ""
-            todoes.push(li)
+           
             countIncrementer()
         }
 
@@ -175,9 +182,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function editContent(event) {
 
-
-        console.log("edit content")
+        console.log("edit content",event.index)
+       
         let li = event.target.parentElement
+
 
 
         let label = li.querySelector('label')
@@ -197,18 +205,21 @@ document.addEventListener("DOMContentLoaded", function () {
         input.focus()
         input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                label.textContent = input.value
+                let updatedText = input.value
+                label.textContent = updatedText
                 checkbox.classList.remove("hidden")
                 button.classList.remove("hidden")
                 input.parentNode.replaceChild(label, input)
             }
         })
-        input.addEventListener("blur", () => {
-            label.textContent = label.textContent
-            input.parentNode.replaceChild(label, input)
-            checkbox.classList.remove("hidden")
-            button.classList.remove("hidden")
-        })
+   
+            input.addEventListener("blur", () => {
+                label.textContent = label.textContent
+                input.parentNode.replaceChild(label, input)
+                checkbox.classList.remove("hidden")
+                button.classList.remove("hidden")
+            })
+      
     }
 
     function allCheckedList() {
